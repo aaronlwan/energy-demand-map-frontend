@@ -14,9 +14,10 @@ function App() {
   const onSubmit = () => {
     const latLonData = GetLatLon(city, state, "US");
     latLonData.then((res)=>{
-      const mapData = GetMapHtml(res.lat, res.lon, 1000);
+      const mapData = GetMapHtml(res.lat, res.lon, 5000);
       mapData.then((res) => {
-        setMapHtml(res.html);
+        console.log(res)
+        setMapHtml(res.map_html);
       })
       setMapLoaded(true);
     })
