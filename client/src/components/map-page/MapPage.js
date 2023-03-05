@@ -49,9 +49,9 @@ const MapPage = () => {
     const [numSites, setNumSites] = useState("");
     const [mapLoaded, setMapLoaded] = useState(false);
     
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
-    const [radius, setRadius] = useState(5000);
+    const [state, setState] = useState(inputState);
+    const [city, setCity] = useState(inputCity);
+    const [radius, setRadius] = useState(inputRadius);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
@@ -79,8 +79,8 @@ const MapPage = () => {
         return (
             <Stack spacing="20px">
                 <HStack spacing={3}>
-                    <Input variant='outline' placeholder={inputCity} value={city} onChange={({target})=> {setCity(target.value)}} />
-                    <Select placeholder={inputState} value={state} onChange={({target})=> {setState(target.value)}} >
+                    <Input variant='outline' placeholder={city} value={city} onChange={({target})=> {setCity(target.value)}} />
+                    <Select placeholder={state} value={state} onChange={({target})=> {setState(target.value)}} >
                         {stateCodes.map((code) => <option key={code}>{code}</option>)}
                     </Select>
                     <Input variant='outline' placeholder='Capture Radius' value={radius} onChange={({target})=> {setRadius(target.value)}} />
