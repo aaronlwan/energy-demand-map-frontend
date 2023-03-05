@@ -12,6 +12,9 @@ import {
   Image,
   Center,
   Spinner,
+  HStack,
+  Input,
+  Select,
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
@@ -50,6 +53,15 @@ export default function CallToActionWithAnnotation() {
             align={'center'}
             alignSelf={'center'}
             position={'relative'}>
+            <HStack spacing={3}>
+              <Input variant='outline' placeholder='City' />
+              <Select placeholder='State'>
+                <option value='option1'>Option 1</option>
+                <option value='option2'>Option 2</option>
+                <option value='option3'>Option 3</option>
+              </Select>
+              <Input variant='outline' placeholder='Capture Radius' />
+            </HStack>
             <Button
               colorScheme={'green'}
               bg={'#FE6700'}
