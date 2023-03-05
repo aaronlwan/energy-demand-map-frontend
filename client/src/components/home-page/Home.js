@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import {React, useState} from "react";
 import { Navigate } from "react-router-dom";
 import {
   Box,
@@ -20,7 +21,7 @@ export default function CallToActionWithAnnotation() {
   
   if (buttonClicked) {
     return (
-      <Navigate to={`/site-sourcing-map`}/>
+      <Navigate to="/site-sourcing-map"/>
     )
   }
 
@@ -66,7 +67,9 @@ export default function CallToActionWithAnnotation() {
               px={6}
               _hover={{
                 bg: '#C56700',
-              }}>
+              }}
+              onClick={() => setButtonClicked(true)}
+              >
               Let's Go Solar
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
@@ -75,7 +78,6 @@ export default function CallToActionWithAnnotation() {
             <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue('gray.800', 'gray.300')}
                 w={71}
                 position={'absolute'}
                 right={-71}
