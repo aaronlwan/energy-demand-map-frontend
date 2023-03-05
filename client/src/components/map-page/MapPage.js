@@ -53,6 +53,7 @@ const MapPage = () => {
     }
 
     if (mapLoaded) {
+        console.log(mapHtml)
         return (
             <div>
                 <HStack spacing={3}>
@@ -81,6 +82,7 @@ const MapPage = () => {
         )
     } else {
         const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
+        console.log(mapCall)
         mapCall.then((res) => {
             setMapHtml(res.map_html);
             console.log(mapHtml);
