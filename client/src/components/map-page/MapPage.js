@@ -38,6 +38,8 @@ const MapPage = () => {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
+    console.log(inputLatitude)
+    console.log(inputLongitude)
 
     if (buttonClicked) {
         const latLonData = GetLatLon(city, state, "US");
