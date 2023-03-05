@@ -71,8 +71,8 @@ const MapPage = () => {
                         }}
                         onClick={() => setButtonClicked(true)}
                     >
-              Let's Go Solar
-            </Button>
+                    Let's Go Solar
+                    </Button>
                 </HStack>
                 <div className='map-wrapper'>
                     <div dangerouslySetInnerHTML={{__html: mapHtml}}/>
