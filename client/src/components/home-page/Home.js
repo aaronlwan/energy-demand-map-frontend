@@ -11,6 +11,7 @@ import {
   createIcon,
   Image,
   Center,
+  Spinner,
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
@@ -57,7 +58,7 @@ export default function CallToActionWithAnnotation() {
               _hover={{
                 bg: '#C56700',
               }}>
-              Get Started
+              Let's Go Solar
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
               Learn more
@@ -72,6 +73,13 @@ export default function CallToActionWithAnnotation() {
                 top={'10px'}
               />
             </Box>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="#FE6700"
+              size="xl"
+            />
           </Stack>
         </Stack>
       </Container>
