@@ -4,6 +4,7 @@ import { GetLatLon } from '../../api-calls/GetLatLon';
 import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import states from '../../statecodes.json';
+import PieChart from "components/charts/PieChart";
 import {
     Box,
     Heading,
@@ -101,7 +102,8 @@ const MapPage = () => {
                     </Button>
                 </HStack>
                 <HStack spacing={3} alignItems='flex-start'>
-                    <div style={{width: 1500}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
+                    <div style={{width: 1350}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
+                    <Stack>
                     <Card variant="outline">
                         <CardHeader>
                             <Heading size='md'>Report</Heading>
@@ -144,6 +146,8 @@ const MapPage = () => {
                             </Stack>
                         </CardBody>
                     </Card>
+                    <PieChart chartData={pieChartData} chartOptions={pieChartOptions} />
+                    </Stack>
                 </HStack>
             </Stack>
         )
