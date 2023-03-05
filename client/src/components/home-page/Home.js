@@ -12,6 +12,7 @@ import {
   createIcon,
   Image,
   Center,
+  Spinner,
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
@@ -42,7 +43,7 @@ export default function CallToActionWithAnnotation() {
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            <Center><Image boxSize='150px' src='/images/gosolar.svg' alt='GoSolar Logo' /></Center>
+            <Center><Image boxSize='150px' src='/images/gosolarnew.svg' alt='GoSolar Logo' /></Center>
             GoSolar! <br />
             <Text as={'span'} color={'#FE6700'}>
               Unlock your solar potential
@@ -66,7 +67,7 @@ export default function CallToActionWithAnnotation() {
               _hover={{
                 bg: '#C56700',
               }}>
-              Get Started
+              Let's Go Solar
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
               Learn more
@@ -81,6 +82,13 @@ export default function CallToActionWithAnnotation() {
                 top={'10px'}
               />
             </Box>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="#FE6700"
+              size="xl"
+            />
           </Stack>
         </Stack>
       </Container>
