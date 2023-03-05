@@ -116,7 +116,7 @@ const MapPage = () => {
                                 ESTIMATED ENERGY DEMAND
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                    {demand}
+                                    Our model projects that your city will require {Math.round(demand)} KWh of energy each year.
                                 </Text>
                             </Box>
                             <Box>
@@ -124,7 +124,7 @@ const MapPage = () => {
                                 ROOFTOP AVAILABILITY
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                    {(countQualified - existingInstalls)/numBuildings}
+                                    Out of the {numBuildings} buildings in your city, {countQualified} of them may be suitable for rooftop installation. {countQualified - existingInstalls} of them have yet to adopt solar rooftops.
                                 </Text>
                             </Box>
                             <Box>
@@ -132,7 +132,7 @@ const MapPage = () => {
                                 POTENTIAL GROUND SITES
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                    {numSites}
+                                    We've identified {numSites} potential ground sites for solar projects. These include brownfields, landfills, and greenlands. We've marked the top 10% sites based on energy production potential and proximity to the existing power grid.
                                 </Text>
                             </Box>
                             <Box>
@@ -140,7 +140,7 @@ const MapPage = () => {
                                 TOTAL ADDED SOLAR POTENTIAL
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                    {potentialProduction + (countQualified - existingInstalls) * medianKwhPotential}
+                                    Altogether, these projects could provide {Math.round(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential)} KWh of energy per year, meeting {Math.round(100*(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential)/potentialProduction)}% of your city's yearly energy needs.
                                 </Text>
                             </Box>
                             </Stack>
