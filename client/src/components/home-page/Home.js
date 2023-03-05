@@ -33,7 +33,7 @@ export default function CallToActionWithAnnotation() {
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            <Center><Image boxSize='150px' src='/images/gosolar.svg' alt='GoSolar Logo' /></Center>
+            <Center><Image boxSize='150px' src='/images/gosolarnew.svg' alt='GoSolar Logo' /></Center>
             GoSolar! <br />
             <Text as={'span'} color={'#FE6700'}>
               Unlock your solar potential
