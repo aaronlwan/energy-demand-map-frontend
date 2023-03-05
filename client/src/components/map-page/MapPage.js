@@ -20,7 +20,14 @@ import {
     HStack,
     Input,
     Select,
+    Stat,
+    StatLabel,
+    StatNumber,
+    StatHelpText,
+    StatArrow,
+    StatGroup,
   } from '@chakra-ui/react';
+  import { Card, CardHeader, CardBody, CardFooter, StackDivider, } from '@chakra-ui/react'
 
 const MapPage = () => {
     const params = useParams();
@@ -46,8 +53,11 @@ const MapPage = () => {
         latLonData.then((res)=> {
            setLat(res.lat);
            setLon(res.lon);
+           console.log(res)
+           console.log("asdfsadf")
         })
         if (lat !== "" && lon !== "") {
+          setButtonClicked(false);
           return (
             <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}/${city}/${state}`}/>
           )
@@ -57,7 +67,7 @@ const MapPage = () => {
     if (mapLoaded) {
         console.log(mapHtml)
         return (
-            <div>
+            <Stack spacing="20px">
                 <HStack spacing={3}>
                     <Input variant='outline' placeholder={inputCity} value={city} onChange={({target})=> {setCity(target.value)}} />
                     <Select placeholder={inputState} value={state} onChange={({target})=> {setState(target.value)}} >
@@ -77,10 +87,52 @@ const MapPage = () => {
                     Let's Go Solar
                     </Button>
                 </HStack>
-                <div className='map-wrapper'>
-                    <div dangerouslySetInnerHTML={{__html: mapHtml}}/>
-                </div>
-            </div>
+                <HStack spacing={3} alignItems='flex-start'>
+                    <div style={{width: 1500}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
+                    <Card variant="outline">
+                        <CardHeader>
+                            <Heading size='md'>Report</Heading>
+                        </CardHeader>
+
+                        <CardBody>
+                            <Stack divider={<StackDivider />} spacing='4'>
+                            <Box>
+                                <Heading size='xs' textTransform='uppercase'>
+                                ESTIMATED ENERGY DEMAND
+                                </Heading>
+                                <Text pt='2' fontSize='sm'>
+                                View a summary of all your clients over the last month.
+                                </Text>
+                            </Box>
+                            <Box>
+                                <Heading size='xs' textTransform='uppercase'>
+                                ROOFTOP AVAILABILITY
+                                </Heading>
+                                <Text pt='2' fontSize='sm'>
+                                Check out the overview of your clients.
+                                </Text>
+                            </Box>
+                            <Box>
+                                <Heading size='xs' textTransform='uppercase'>
+                                OPEN GROUND SITES
+                                </Heading>
+                                <Text pt='2' fontSize='sm'>
+                                See a detailed analysis of all your business clients.
+                                </Text>
+                            </Box>
+                            <Box>
+                                <Heading size='xs' textTransform='uppercase'>
+                                TOTAL SOLAR POTENTIAL
+                                </Heading>
+                                <Text pt='2' fontSize='sm'>
+                                See a detailed analysis of all your business clients.
+                                </Text>
+                            </Box>
+                            </Stack>
+                        </CardBody>
+                    </Card>
+                </HStack>
+            </Stack>
         )
     } else {
         const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
