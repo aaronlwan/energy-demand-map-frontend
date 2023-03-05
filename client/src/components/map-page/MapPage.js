@@ -37,14 +37,25 @@ const MapPage = () => {
     const inputState = params.state;
     const inputCity = params.city;
     const stateCodes = Object.keys(states);
+
     const [mapHtml, setMapHtml] = useState("");
+    const [demand, setDemand] = useState("");
+    const [existingInstalls, setExistingInstalls] = useState("");
+    const [countQualified, setCountQualified] = useState("");
+    const [totalKwhPotential, setTotalKwhPotential] = useState("");
+    const [medianKwhPotential, setMedianKwhPotential] = useState("");
+    const [numBuildings, setNumBuildings] = useState("");
+    const [potentialProduction, setPotentialProduction] = useState("");
+    const [numSites, setNumSites] = useState("");
     const [mapLoaded, setMapLoaded] = useState(false);
+    
     const [state, setState] = useState("");
     const [city, setCity] = useState("");
     const [radius, setRadius] = useState(5000);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
+
     console.log(inputLatitude)
     console.log(inputLongitude)
 
@@ -53,11 +64,10 @@ const MapPage = () => {
         latLonData.then((res)=> {
            setLat(res.lat);
            setLon(res.lon);
-           console.log(res)
-           console.log("asdfsadf")
         })
         if (lat !== "" && lon !== "") {
           setButtonClicked(false);
+          setMapLoaded(false);
           return (
             <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}/${city}/${state}`}/>
           )
@@ -135,10 +145,18 @@ const MapPage = () => {
             </Stack>
         )
     } else {
-        const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
+        const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius, inputCity, inputState);
         console.log(mapCall)
         mapCall.then((res) => {
             setMapHtml(res.map_html);
+            setDemand(res.demand);
+            setExistingInstalls(res.existing_installs);
+            setCountQualified(res.count_qualified);
+            setTotalKwhPotential(res.total_kwh_potential);
+            setMedianKwhPotential(res.median_kwh_potential);
+            setNumBuildings(res.number_buildings);
+            setPotentialProduction(res.potential_production);
+            setNumSites(res.number_sites);
             console.log(mapHtml);
             setMapLoaded(true);
         })
