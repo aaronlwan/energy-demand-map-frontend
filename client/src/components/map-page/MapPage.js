@@ -26,6 +26,7 @@ import {
     StatHelpText,
     StatArrow,
     StatGroup,
+    Flex,
   } from '@chakra-ui/react';
   import { Card, CardHeader, CardBody, CardFooter, StackDivider, } from '@chakra-ui/react'
 
@@ -161,13 +162,19 @@ const MapPage = () => {
             setMapLoaded(true);
         })
         return (
-            <Center><Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="#FE6700"
-            size="xl"
-          /></Center>
+          <Flex width={"100vw"} height={"100vh"} alignContent={"center"} justifyContent={"center"}>
+            <Center>
+                <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="#FE6700"
+                    size="xl"
+                    alignItems="center"
+                    alignSelf="center"
+                />
+            </Center>
+          </Flex>
         )
     }
 }
