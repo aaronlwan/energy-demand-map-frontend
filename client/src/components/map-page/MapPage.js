@@ -2,6 +2,9 @@ import { React, useState} from 'react';
 import { GetMapHtml } from '../../api-calls/GetMapHtml';
 import { GetLatLon } from '../../api-calls/GetLatLon';
 import states from '../../statecodes.json';
+import Spinner from '@chakra-ui/react';
+import { useParams } from "react-router-dom";
+
 
 const MapPage = () => {
     const [mapLoaded, setMapLoaded] = useState(false);

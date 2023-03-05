@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import {React, useState} from "react";
 import { Navigate } from "react-router-dom";
+import { GetLatLon } from '../../api-calls/GetLatLon';
+import states from '../../statecodes.json';
 import {
   Box,
   Heading,
@@ -21,11 +23,24 @@ import {
 
 export default function CallToActionWithAnnotation() {
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [radius, setRadius] = useState(5000);
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
+  const stateCodes = Object.keys(states);
   
   if (buttonClicked) {
-    return (
-      <Navigate to="/site-sourcing-map"/>
-    )
+    const latLonData = GetLatLon(city, state, "US");
+    latLonData.then((res)=> {
+       setLat(res.lat);
+       setLon(res.lon);
+    })
+    if (lat !== "" && lon !== "") {
+      return (
+        <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}`}/>
+      )
+    }
   }
 
   return (
@@ -64,13 +79,11 @@ export default function CallToActionWithAnnotation() {
             alignSelf={'center'}
             position={'relative'}>
             <HStack spacing={3}>
-              <Input variant='outline' placeholder='City' />
-              <Select placeholder='State'>
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+              <Input variant='outline' placeholder='City' value={city} onChange={({target})=> {setCity(target.value)}} />
+              <Select placeholder='State' value={state} onChange={({target})=> {setState(target.value)}} >
+                {stateCodes.map((code) => <option key={code}>{code}</option>)}
               </Select>
-              <Input variant='outline' placeholder='Capture Radius' />
+              <Input variant='outline' placeholder='Capture Radius' value={radius} onChange={({target})=> {setRadius(target.value)}} />
             </HStack>
             <Button
               colorScheme={'green'}
@@ -96,13 +109,6 @@ export default function CallToActionWithAnnotation() {
                 top={'10px'}
               />
             </Box>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="#FE6700"
-              size="xl"
-            />
           </Stack>
         </Stack>
       </Container>

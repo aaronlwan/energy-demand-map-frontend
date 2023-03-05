@@ -12,7 +12,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route exact path="/home" element={<CallToActionWithAnnotation/>}/>
-            <Route exact path="/site-sourcing-map" element={<MapPage/>}/>
+            <Route exact path="/site-sourcing-map/:lat/:lon/:rad" element={<MapPage/>}/>
           </Routes>
         </BrowserRouter>
       </div>
