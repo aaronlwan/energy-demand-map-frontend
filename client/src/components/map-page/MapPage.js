@@ -1,59 +1,56 @@
 import { React, useState} from 'react';
 import { GetMapHtml } from '../../api-calls/GetMapHtml';
 import { GetLatLon } from '../../api-calls/GetLatLon';
-import states from '../../statecodes.json';
-import Spinner from '@chakra-ui/react';
 import { useParams } from "react-router-dom";
-
+import states from '../../statecodes.json';
+import {
+    Box,
+    Heading,
+    Container,
+    Text,
+    Button,
+    Stack,
+    Icon,
+    useColorModeValue,
+    createIcon,
+    Image,
+    Center,
+    Spinner,
+    HStack,
+    Input,
+    Select,
+  } from '@chakra-ui/react';
 
 const MapPage = () => {
+    const params = useParams();
+    const inputLatitude = params.lat;
+    const inputLongitude = params.lon;
+    const inputRadius = params.rad;
+    const [mapHtml, setMapHtml] = useState("");
     const [mapLoaded, setMapLoaded] = useState(false);
-    const [mapHtml, setMapHtml] = useState("Loading map...");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const stateCodes = Object.keys(states);
+    
+    const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
+    mapCall.then((res) => {
+        setMapHtml(res.map_html);
+        console.log(mapHtml);
+        setMapLoaded(true);
+    })
 
-    const onSubmit = () => {
-        const latLonData = GetLatLon(city, state, "US");
-        latLonData.then((res)=>{
-            const mapData = GetMapHtml(res.lat, res.lon, 1000);
-            mapData.then((res) => {
-            setMapHtml(res.html);
-            })
-            setMapLoaded(true);
-        })
+    if (mapLoaded) {
+        return (
+            "This will be the map"
+        )
+    } else {
+        return (
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="#FE6700"
+              size="xl"
+            />
+        )
     }
-
-    const Map = (props) => {
-        const loaded = props.loaded;
-        if (loaded) {
-            return (
-            <div dangerouslySetInnerHTML={{__html: mapHtml}}/>
-            )
-        } else {
-            return (
-            "Map Placeholder"
-            )
-        }
-    }
-
-    return (
-    <div className="App">
-        <div className="input-wrapper">
-        <label>City:</label>
-        <input className="city-input" value={city} onChange={({target})=> {setCity(target.value)}}/>
-        <label>State:</label>
-        <select className="state-input" value={state} onChange={({target}) =>{setState(target.value)}}>
-            <option></option>
-            {stateCodes.map((code) => <option key={code}>{code}</option>)}
-        </select>
-        <div className="submit-button" onClick={onSubmit}>GoSolar!</div>
-        </div>
-        <div className="map-wrapper">
-        <Map loaded={mapLoaded}/>
-        </div>
-    </div>
-    );
 }
 
 export default MapPage;
