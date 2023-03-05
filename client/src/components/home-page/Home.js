@@ -38,7 +38,7 @@ export default function CallToActionWithAnnotation() {
     })
     if (lat !== "" && lon !== "") {
       return (
-        <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}`}/>
+        <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}/${city}/${state}`}/>
       )
     }
   }
