@@ -32,14 +32,13 @@ export default function CallToActionWithAnnotation() {
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
             GoSolar! <br />
-            <Text as={'span'} color={'green.400'}>
+            <Text as={'span'} color={'#E4AC41'}>
               Unlock your solar potential
             </Text>
           </Heading>
           <Text color={'gray.500'}>
-            Monetize your content by charging your most loyal readers and reward
-            them loyalty points. Give back to your loyal readers by granting
-            them access to your pre-releases and sneak-peaks.
+          GoSolar uses satellite imagery and image classification to identify the best places for community solar projects. 
+          We help cities maximize their solar potential and transition to renewable energy for a more sustainable future.
           </Text>
           <Stack
             direction={'column'}
@@ -49,11 +48,11 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}>
             <Button
               colorScheme={'green'}
-              bg={'green.400'}
+              bg={'#E4AC41'}
               rounded={'full'}
               px={6}
               _hover={{
-                bg: 'green.500',
+                bg: '#CCAC41',
               }}>
               Get Started
             </Button>
@@ -69,15 +68,6 @@ export default function CallToActionWithAnnotation() {
                 right={-71}
                 top={'10px'}
               />
-              <Text
-                fontSize={'lg'}
-                fontFamily={'Caveat'}
-                position={'absolute'}
-                right={'-125px'}
-                top={'-15px'}
-                transform={'rotate(10deg)'}>
-                Starting at $15/mo
-              </Text>
             </Box>
           </Stack>
         </Stack>
