@@ -4,7 +4,6 @@ import { GetLatLon } from '../../api-calls/GetLatLon';
 import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import states from '../../statecodes.json';
-import PieChart from "components/charts/PieChart";
 import {
     Box,
     Heading,
@@ -81,8 +80,8 @@ const MapPage = () => {
     if (mapLoaded) {
         console.log(mapHtml)
         return (
-            <Stack spacing="20px">
-                <HStack spacing={5}>
+            <Stack spacing="20px" marginTop={3}>
+                <HStack spacing={5} paddingLeft={3}>
                     <Input width='200' variant='outline' placeholder={city} value={city} onChange={({target})=> {setCity(target.value)}} />
                     <Select width='200' placeholder={state} value={state} onChange={({target})=> {setState(target.value)}} >
                         {stateCodes.map((code) => <option key={code}>{code}</option>)}
@@ -102,7 +101,7 @@ const MapPage = () => {
                     </Button>
                 </HStack>
                 <HStack spacing={3} alignItems='flex-start'>
-                    <div style={{width: 1350}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
+                    <div style={{width: 3000, height:3000}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
                     <Stack>
                     <Card variant="outline">
                         <CardHeader>
@@ -146,7 +145,6 @@ const MapPage = () => {
                             </Stack>
                         </CardBody>
                     </Card>
-                    <PieChart chartData={pieChartData} chartOptions={pieChartOptions} />
                     </Stack>
                 </HStack>
             </Stack>
