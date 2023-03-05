@@ -56,22 +56,24 @@ const MapPage = () => {
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
 
-    console.log(inputLatitude)
-    console.log(inputLongitude)
+    const [latLonLoaded, setLatLonLoaded] = useState(false);
 
     if (buttonClicked) {
         const latLonData = GetLatLon(city, state, "US");
         latLonData.then((res)=> {
            setLat(res.lat);
            setLon(res.lon);
+           setLatLonLoaded(true);
         })
-        if (lat !== "" && lon !== "") {
-          setButtonClicked(false);
-          setMapLoaded(false);
-          return (
-            <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}/${city}/${state}`}/>
-          )
-        }
+    }
+
+    if (latLonLoaded) {
+        setButtonClicked(false);
+        setMapLoaded(false);
+        setLatLonLoaded(false);
+        return (
+          <Navigate to={`/site-sourcing-map/${lat}/${lon}/${radius}/${city}/${state}`}/>
+        )
     }
 
     if (mapLoaded) {
