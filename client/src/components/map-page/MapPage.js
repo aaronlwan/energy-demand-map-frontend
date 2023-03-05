@@ -81,27 +81,8 @@ const MapPage = () => {
         console.log(mapHtml)
         return (
             <Stack spacing="20px" marginTop={3}>
-                <HStack spacing={5} paddingLeft={3}>
-                    <Input width='200' variant='outline' placeholder={city} value={city} onChange={({target})=> {setCity(target.value)}} />
-                    <Select width='200' placeholder={state} value={state} onChange={({target})=> {setState(target.value)}} >
-                        {stateCodes.map((code) => <option key={code}>{code}</option>)}
-                    </Select>
-                    <Input width='200' variant='outline' placeholder='Capture Radius' value={radius} onChange={({target})=> {setRadius(target.value)}} />
-                    <Button
-                        colorScheme={'green'}
-                        bg={'#FE6700'}
-                        rounded={'full'}
-                        px={6}
-                        _hover={{
-                        bg: '#C56700',
-                        }}
-                        onClick={() => setButtonClicked(true)}
-                    >
-                    Let's Go Solar
-                    </Button>
-                </HStack>
                 <HStack spacing={3} alignItems='flex-start'>
-                    <div style={{width: 3000, height:3000}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
+                    <div style={{width: 3000}}dangerouslySetInnerHTML={{__html: mapHtml}}/>
                     <Stack>
                     <Card variant="outline">
                         <CardHeader>
@@ -114,32 +95,32 @@ const MapPage = () => {
                                 <Heading size='xs' textTransform='uppercase'>
                                 ESTIMATED ENERGY DEMAND
                                 </Heading>
-                                <Text pt='2' fontSize='sm'>
-                                    Our model projects that your city will require {Math.round(demand)} KWh of energy each year.
+                                <Text pt='6' fontSize='md'>
+                                    Our model projects that your city will require <b>{Math.round(demand)}</b> KWh of energy each year.
                                 </Text>
                             </Box>
                             <Box>
                                 <Heading size='xs' textTransform='uppercase'>
                                 ROOFTOP AVAILABILITY
                                 </Heading>
-                                <Text pt='2' fontSize='sm'>
-                                    Out of the {numBuildings} buildings in your city, {countQualified} of them may be suitable for rooftop installation. {countQualified - existingInstalls} of them have yet to adopt solar rooftops.
+                                <Text pt='6' fontSize='md'>
+                                    Out of the <b>{numBuildings}</b> buildings in your city, <b>{countQualified}</b> of them may be suitable for rooftop installation. <b>{countQualified - existingInstalls}</b> of them have yet to adopt solar rooftops.
                                 </Text>
                             </Box>
                             <Box>
                                 <Heading size='xs' textTransform='uppercase'>
                                 POTENTIAL GROUND SITES
                                 </Heading>
-                                <Text pt='2' fontSize='sm'>
-                                    We've identified {numSites} potential ground sites for solar projects. These include brownfields, landfills, and greenlands. We've marked the top 10% sites based on energy production potential and proximity to the existing power grid.
+                                <Text pt='6' fontSize='md'>
+                                    We've identified <b>{numSites}</b> potential ground sites for solar projects. These include brownfields, landfills, and greenlands. We've marked the top 10% sites based on energy production potential and proximity to the existing power grid.
                                 </Text>
                             </Box>
                             <Box>
                                 <Heading size='xs' textTransform='uppercase'>
                                 TOTAL ADDED SOLAR POTENTIAL
                                 </Heading>
-                                <Text pt='2' fontSize='sm'>
-                                    Altogether, these projects could provide {Math.round(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential)} KWh of energy per year, meeting {Math.round(100*(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential)/potentialProduction)}% of your city's yearly energy needs.
+                                <Text pt='6' fontSize='md'>
+                                    Altogether, these projects could provide <b>{Math.round(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential)}</b> KWh of energy per year, meeting <b>{Math.round((Math.round(potentialProduction + (countQualified - existingInstalls) * medianKwhPotential))/Math.round(demand)*100)}%</b> your city's yearly energy needs.
                                 </Text>
                             </Box>
                             </Stack>
