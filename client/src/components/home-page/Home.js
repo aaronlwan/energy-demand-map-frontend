@@ -9,6 +9,8 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Image,
+  Center,
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
@@ -31,14 +33,15 @@ export default function CallToActionWithAnnotation() {
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
+            <Center><Image boxSize='150px' src='/images/gosolar.svg' alt='GoSolar Logo' /></Center>
             GoSolar! <br />
-            <Text as={'span'} color={'#E4AC41'}>
+            <Text as={'span'} color={'#FE6700'}>
               Unlock your solar potential
             </Text>
           </Heading>
           <Text color={'gray.500'}>
           GoSolar uses satellite imagery and image classification to identify the best places for community solar projects. 
-          We help cities maximize their solar potential and transition to renewable energy for a more sustainable future.
+          We help cities meet their energy demands by maximizing their solar potential and helping them transition to renewable energy.
           </Text>
           <Stack
             direction={'column'}
@@ -48,11 +51,11 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}>
             <Button
               colorScheme={'green'}
-              bg={'#E4AC41'}
+              bg={'#FE6700'}
               rounded={'full'}
               px={6}
               _hover={{
-                bg: '#CCAC41',
+                bg: '#C56700',
               }}>
               Get Started
             </Button>
