@@ -114,7 +114,7 @@ const MapPage = () => {
                                 ESTIMATED ENERGY DEMAND
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                View a summary of all your clients over the last month.
+                                    {demand}
                                 </Text>
                             </Box>
                             <Box>
@@ -122,23 +122,23 @@ const MapPage = () => {
                                 ROOFTOP AVAILABILITY
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                Check out the overview of your clients.
+                                    {(countQualified - existingInstalls)/numBuildings}
                                 </Text>
                             </Box>
                             <Box>
                                 <Heading size='xs' textTransform='uppercase'>
-                                OPEN GROUND SITES
+                                POTENTIAL GROUND SITES
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                See a detailed analysis of all your business clients.
+                                    {numSites}
                                 </Text>
                             </Box>
                             <Box>
                                 <Heading size='xs' textTransform='uppercase'>
-                                TOTAL SOLAR POTENTIAL
+                                TOTAL ADDED SOLAR POTENTIAL
                                 </Heading>
                                 <Text pt='2' fontSize='sm'>
-                                See a detailed analysis of all your business clients.
+                                    {potentialProduction + (countQualified - existingInstalls) * medianKwhPotential}
                                 </Text>
                             </Box>
                             </Stack>
