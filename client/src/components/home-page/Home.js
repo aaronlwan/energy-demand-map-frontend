@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Navigate } from "react-router-dom";
 import {
   Box,
   Heading,
@@ -14,6 +15,14 @@ import {
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
+  const [buttonClicked, setButtonClicked] = useState(false);
+  
+  if (buttonClicked) {
+    return (
+      <Navigate to={`/site-sourcing-map`}/>
+    )
+  }
+
   return (
     <>
       <Head>
