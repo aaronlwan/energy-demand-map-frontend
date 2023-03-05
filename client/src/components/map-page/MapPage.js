@@ -68,12 +68,12 @@ const MapPage = () => {
         console.log(mapHtml)
         return (
             <Stack spacing="20px">
-                <HStack spacing={3}>
-                    <Input variant='outline' placeholder={inputCity} value={city} onChange={({target})=> {setCity(target.value)}} />
-                    <Select placeholder={inputState} value={state} onChange={({target})=> {setState(target.value)}} >
+                <HStack spacing={5}>
+                    <Input width='200' variant='outline' placeholder={inputCity} value={city} onChange={({target})=> {setCity(target.value)}} />
+                    <Select width='200' placeholder={inputState} value={state} onChange={({target})=> {setState(target.value)}} >
                         {stateCodes.map((code) => <option key={code}>{code}</option>)}
                     </Select>
-                    <Input variant='outline' placeholder='Capture Radius' value={radius} onChange={({target})=> {setRadius(target.value)}} />
+                    <Input width='200' variant='outline' placeholder='Capture Radius' value={radius} onChange={({target})=> {setRadius(target.value)}} />
                     <Button
                         colorScheme={'green'}
                         bg={'#FE6700'}
@@ -143,13 +143,13 @@ const MapPage = () => {
             setMapLoaded(true);
         })
         return (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="#FE6700"
-              size="xl"
-            />
+            <Center><Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="#FE6700"
+            size="xl"
+          /></Center>
         )
     }
 }
