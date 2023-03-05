@@ -28,19 +28,19 @@ const MapPage = () => {
     const inputRadius = params.rad;
     const [mapHtml, setMapHtml] = useState("");
     const [mapLoaded, setMapLoaded] = useState(false);
-    
-    const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
-    mapCall.then((res) => {
-        setMapHtml(res.map_html);
-        console.log(mapHtml);
-        setMapLoaded(true);
-    })
+
 
     if (mapLoaded) {
         return (
             "This will be the map"
         )
     } else {
+        const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
+        mapCall.then((res) => {
+            setMapHtml(res.map_html);
+            console.log(mapHtml);
+            setMapLoaded(true);
+        })
         return (
             <Spinner
               thickness="4px"

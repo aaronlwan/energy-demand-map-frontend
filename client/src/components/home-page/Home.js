@@ -100,15 +100,6 @@ export default function CallToActionWithAnnotation() {
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
               Learn more
             </Button>
-            <Box>
-              <Icon
-                as={Arrow}
-                w={71}
-                position={'absolute'}
-                right={-71}
-                top={'10px'}
-              />
-            </Box>
           </Stack>
         </Stack>
       </Container>
