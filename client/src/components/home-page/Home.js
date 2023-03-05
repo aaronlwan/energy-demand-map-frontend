@@ -9,6 +9,8 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Image,
+  Center,
 } from '@chakra-ui/react';
 
 export default function CallToActionWithAnnotation() {
@@ -31,13 +33,15 @@ export default function CallToActionWithAnnotation() {
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
+            <Center><Image boxSize='150px' src='/images/gosolar.svg' alt='GoSolar Logo' /></Center>
             GoSolar! <br />
-            <Text as={'span'} color={'green.400'}>
+            <Text as={'span'} color={'#FE6700'}>
               Unlock your solar potential
             </Text>
           </Heading>
           <Text color={'gray.500'}>
-            Identify optimal areas for your next community solar project
+          GoSolar uses satellite imagery and image classification to identify the best places for community solar projects. 
+          We help cities meet their energy demands by maximizing their solar potential and helping them transition to renewable energy.
           </Text>
           <Stack
             direction={'column'}
@@ -47,11 +51,11 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}>
             <Button
               colorScheme={'green'}
-              bg={'green.400'}
+              bg={'#FE6700'}
               rounded={'full'}
               px={6}
               _hover={{
-                bg: 'green.500',
+                bg: '#C56700',
               }}>
               Get Started
             </Button>
@@ -67,15 +71,6 @@ export default function CallToActionWithAnnotation() {
                 right={-71}
                 top={'10px'}
               />
-              <Text
-                fontSize={'lg'}
-                fontFamily={'Caveat'}
-                position={'absolute'}
-                right={'-125px'}
-                top={'-15px'}
-                transform={'rotate(10deg)'}>
-                Starting at $15/mo
-              </Text>
             </Box>
           </Stack>
         </Stack>
