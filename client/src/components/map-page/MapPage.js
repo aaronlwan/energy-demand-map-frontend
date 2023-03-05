@@ -38,6 +38,8 @@ const MapPage = () => {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [lat, setLat] = useState("");
     const [lon, setLon] = useState("");
+    console.log(inputLatitude)
+    console.log(inputLongitude)
 
     if (buttonClicked) {
         const latLonData = GetLatLon(city, state, "US");
@@ -53,6 +55,7 @@ const MapPage = () => {
     }
 
     if (mapLoaded) {
+        console.log(mapHtml)
         return (
             <div>
                 <HStack spacing={3}>
@@ -81,6 +84,7 @@ const MapPage = () => {
         )
     } else {
         const mapCall = GetMapHtml(inputLatitude, inputLongitude, inputRadius);
+        console.log(mapCall)
         mapCall.then((res) => {
             setMapHtml(res.map_html);
             console.log(mapHtml);
